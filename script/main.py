@@ -42,7 +42,7 @@ print(df.isnull().sum())
 df['Date'] = pd.to_datetime(df['Date'])
 
 # Save as CSV
-df.to_csv('clean_data.csv', index=False)
+df.to_csv('../data/processed_data/clean_data.csv', index=False)
 
 
 # Analysis

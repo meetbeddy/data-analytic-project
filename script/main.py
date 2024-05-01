@@ -74,19 +74,23 @@ plt.ylabel('Precipitation (Inches)')
 plt.grid(True)
 
 plt.tight_layout()
-# plt.show()
+plt.show()
 
 # Calculate summary statistics
 summary_stats = df[['TempAvgF', 'VisibilityAvgMiles', 'PrecipitationSumInches']].describe()
 print("\nSummary Statistics:")
 print(summary_stats)
 
-# Correlation analysis
-correlation_matrix = df.corr()
+# Correlation analysis (excluding non-numeric columns)
+numeric_df = df.select_dtypes(include=['number'])  # Select only numeric columns
+correlation_matrix = numeric_df.corr()
 
 print(correlation_matrix)
 
 plt.figure(figsize=(10, 8))
-sns.heatmap(correlation_matrix, annot=True, cmap='cool', fmt=".2f")
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f")
 plt.title('Correlation Matrix')
 plt.show()
+
+
+
